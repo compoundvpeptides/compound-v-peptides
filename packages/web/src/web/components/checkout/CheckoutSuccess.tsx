@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useLocation } from "wouter";
+import { pixelPurchase } from "../../lib/pixel";
 import { motion } from "framer-motion";
 
 interface Props {
@@ -10,6 +12,7 @@ interface Props {
 
 export function CheckoutSuccess({ paidId, isLoggedIn, drawerBg, textSecondary }: Props) {
   const [, navigate] = useLocation();
+  useEffect(() => { pixelPurchase(paidId ?? ""); }, []);
   return (
     <div style={{ minHeight: "80vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }}

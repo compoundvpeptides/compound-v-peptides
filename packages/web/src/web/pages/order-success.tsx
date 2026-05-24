@@ -35,7 +35,7 @@ export default function OrderSuccess() {
           <p style={{ color: "#F1F5F9", fontSize: 15, fontWeight: 600, margin: 0 }}>{email}</p>
         </div>
 
-        <a href="https://wa.me/918920537091" target="_blank" rel="noreferrer" style={{ display: "block", background: "#25D366", color: "#000", fontFamily: "Rajdhani, sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: "0.08em", textDecoration: "none", padding: "14px 0", borderRadius: 50, marginBottom: 16 }}>WhatsApp Us</a>
+        <a href="https://wa.me/919310703553" target="_blank" rel="noreferrer" style={{ display: "block", background: "#25D366", color: "#000", fontFamily: "Rajdhani, sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: "0.08em", textDecoration: "none", padding: "14px 0", borderRadius: 50, marginBottom: 16 }}>WhatsApp Us</a>
 
         <a href="/products" style={{ display: "block", color: "rgba(0,212,170,0.6)", fontSize: 13, textDecoration: "none", letterSpacing: "0.05em" }}>Continue Shopping</a>
 

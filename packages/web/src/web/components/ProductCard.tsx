@@ -345,6 +345,8 @@ export function ProductCard({ product }: { product: Product }) {
           Product appearance, packaging, and labelling may vary from images shown. Images are for illustrative purposes only.
         </p>
       </div>
+    
+      
     </motion.div>
   );
 }

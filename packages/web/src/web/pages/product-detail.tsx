@@ -1,3 +1,4 @@
+import { pixelViewContent, pixelAddToCart } from "../lib/pixel";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { motion } from "framer-motion";
@@ -42,6 +43,7 @@ export default function ProductDetail() {
     setSelectedTier(product?.variants[0]?.pricing[0] ?? null);
     setAdded(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  if (product) pixelViewContent(product.id, product.name, product?.variants[0]?.pricing[0]?.inr ?? 0);
   }, [id]);
 
 
@@ -53,6 +55,7 @@ export default function ProductDetail() {
 
   const handleAdd = () => {
     if (!product || !selectedTier || !selectedVariant || selectedTier.inr === 0) return;
+  pixelAddToCart(product.id, product.name, selectedTier.inr);
     // Build a typed cart-compatible product — no `as any` needed
     const cartProduct: Product = {
       ...product,
@@ -243,7 +246,8 @@ export default function ProductDetail() {
             )}
 
             <p className="text-[10px] text-center mt-3" style={{ fontFamily: "'Inter', sans-serif", color: "#94A3B8" }}>
-              For research use only · 18+ · Certificate of analysis included
+              <a href={"https://wa.me/919310703553?text="+encodeURIComponent("Hi, I would like to request the Certificate of Analysis (COA) for "+product.name+(selectedVariant?" "+selectedVariant.name.replace(product.name,"").trim():""))} target="_blank" rel="noopener noreferrer" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"8px",marginTop:"12px",padding:"12px",border:"1px solid #25D366",borderRadius:"10px",color:"#25D366",fontSize:"13px",fontWeight:600,letterSpacing:"0.05em",textDecoration:"none",width:"100%"}}>📋 Request Certificate of Analysis (COA)</a>
+          For research use only · 18+ · Certificate of analysis included
             </p>
             <p className="text-center mt-2"
               style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", color: "#475569", lineHeight: "1.4" }}>

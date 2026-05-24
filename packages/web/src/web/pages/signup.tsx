@@ -67,6 +67,7 @@ export default function Signup() {
     });
     setLoading(false);
     if (err) { setServerError(err); return; }
+    pixelCompleteRegistration();
     navigate("/products");
   };
 

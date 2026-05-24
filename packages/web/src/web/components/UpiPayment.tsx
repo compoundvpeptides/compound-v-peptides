@@ -12,7 +12,7 @@ export function UpiPayment({ totalInr, onConfirm }: UpiPaymentProps) {
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
 
-  const upiId = "compound.vpeptides@okaxis";
+  const upiId = "compoundv.peptides@okaxis";
   const upiLink = `upi://pay?pa=${upiId}&pn=Compound%20V%20Peptides&am=${totalInr}&cu=INR&tn=CompoundV%20Order`;
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiLink)}`;
 

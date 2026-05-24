@@ -7,6 +7,7 @@ import { useRazorpay } from "../hooks/useRazorpay";
 import { useAuth } from "../context/AuthContext";
 import { DontForget } from "../components/DontForget";
 import { products } from "../data/products";
+import { pixelInitiateCheckout } from "../lib/pixel";
 import type { Step, PaymentStatus, PersonalInfo, ShippingInfo } from "../components/checkout/types";
 import { CheckoutSteps } from "../components/checkout/CheckoutSteps";
 import { GuestGateDialog } from "../components/checkout/GuestGateDialog";
@@ -17,6 +18,7 @@ import { StepReview } from "../components/checkout/StepReview";
 import { StepPayment } from "../components/checkout/StepPayment";
 
 const bacWaterProduct = products.find((p) => p.category === "bac-water");
+
 
 export default function Checkout() {
   const { items, removeItem, updateQty, total, clearCart } = useCart();
@@ -53,6 +55,7 @@ export default function Checkout() {
   const fmt = (inr: number) => `₹${inr.toLocaleString("en-IN")}`;
   useEffect(() => { if (user) setPersonal({ firstName: user.firstName, lastName: user.lastName, email: user.email, phone: user.phone, whatsapp: user.whatsapp }); }, [user]);
   useEffect(() => { if (!gateShown && !isLoggedIn && items.length > 0) { setGateOpen(true); setGateShown(true); } }, []);
+  useEffect(() => { pixelInitiateCheckout(); }, []);
 
 
   const [, setLocation] = useLocation();
